@@ -29,7 +29,7 @@
 /*
  * AHBx and APBx Bus Peripheral base addresses
  */
-#define PERIPH_BASEADDR                  0x40000000U
+#define PERIPH_BASEADDR                   0x40000000U
 #define APB1PERIPH_BASEADDR           PERIPH_BASEADDR
 #define APB2PERIPH_BASEADDR           0x40010000U
 #define AHB1PERIPH_BASEADDR          0x40020000U
@@ -47,7 +47,8 @@
 //#define GPIOF_BASEADDR          (AHB1PERIPH_BASEADDR + 0x0000)
 //#define GPIOG_BASEADDR          (AHB1PERIPH_BASEADDR + 0x0000)
 #define GPIOH_BASEADDR          (AHB1PERIPH_BASEADDR + 0x1C00)
-#define RCC_BASEADDR          (AHB1PERIPH_BASEADDR + 0x3800)
+#define RCC_BASEADDR              (AHB1PERIPH_BASEADDR + 0x3800)
+
 
 /*
  * Base addresses of peripherals which are hanging on APB1 bus
@@ -70,7 +71,8 @@
 
 #define EXTI_BASEADDR           (APB2PERIPH_BASEADDR + 0x3C00)
 #define SPI1_BASEADDR           (APB2PERIPH_BASEADDR + 0x3000)
-#define SPI2_BASEADDR           (APB2PERIPH_BASEADDR + 0x3400)
+#define SPI4_BASEADDR           (APB2PERIPH_BASEADDR + 0x3400)
+#define SYSCFG_BASEADDR        (APB2PERIPH_BASEADDR + 0x3800)
 #define USART6_BASEADDR           (APB2PERIPH_BASEADDR + 0x1400)
 #define USART1_BASEADDR           (APB2PERIPH_BASEADDR + 0x1000)
 
@@ -122,7 +124,7 @@ typedef struct {
 	__vo uint32_t CSR;  // Address offset: 0x74
 	__vo uint32_t SSCGR;  // Address offset: 0x80
 	__vo uint32_t PLLI2SCFGR; //Address offset: 0x84
-	__vo uint32_t _DCKCFGR; //Address offset: 0x8C
+	__vo uint32_t DCKCFGR; //Address offset: 0x8C
 
 
 
@@ -197,8 +199,60 @@ typedef struct {
 }USART_RegDef_t;
 
 
+/*
+ * peripheral definitions ( Peripheral base addresses typecasted to xxx_RegDef_t)
+ * Treat the address GPIOD_BASEADDR as a pointer to a GPIO_RegDef_t structure
+ * So now, you can access registers like this:
+
+			GPIOD->MODER = 0xA8000000;
+			GPIOD->ODR |= (1 << 12);  // Set PD12 high
+ */
+#define GPIOA  ((GPIO_RegDef_t*)GPIOA_BASEADDR)
+#define GPIOB  ((GPIO_RegDef_t*)GPIOB_BASEADDR)
+#define GPIOC  ((GPIO_RegDef_t*)GPIOC_BASEADDR)
+#define GPIOD  ((GPIO_RegDef_t*)GPIOD_BASEADDR)
+#define GPIOE  ((GPIO_RegDef_t*)GPIOE_BASEADDR)
+#define GPIOH  ((GPIO_RegDef_t*)GPIOH_BASEADDR)
+
+#define RCC       ((RCC_RegDef_t*)RCC_BASEADDR)
+#define EXTI      ((EXTI_RegDef_t*)EXTI_BASEADDR)
+#define SYSCFG ((SYSCFG_RegDef_t*)SYSCFG_BASEADDR)
+
+#define SPI1       ((SPI_RegDef_t*)SPI1_BASEADDR)
+#define SPI2       ((SPI_RegDef_t*)SPI2_BASEADDR)
+#define SPI3       ((SPI_RegDef_t*)SPI3_BASEADDR)
+#define SPI4       ((SPI_RegDef_t*)SPI4_BASEADDR)
+
+#define USART1   ((USART_RegDef_t*)USART1_BASEADDR)
+#define USART2   ((USART_RegDef_t*)USART2_BASEADDR)
+#define USART6   ((USART_RegDef_t*)USART6_BASEADDR)
+
+#define I2C1        ((I2C_RegDef_t*)I2C1_BASEADDR)
+#define I2C2        ((I2C_RegDef_t*)I2C2_BASEADDR)
+#define I2C3        ((I2C_RegDef_t*)I2C3_BASEADDR)
 
 
+/*
+ * Clock Enable Macros for USARTx peripherals
+ */
+#define USART2_CLK_EN() (RCC->AHB1ENR |= (1 << 17))
+#define USART1_CLK_EN() (RCC->AHB2ENR |= (1 << 4))
+#define USART6_CLK_EN() (RCC->AHB2ENR |= (1 << 5))
 
+/*
+ * Clock Enable Macros for I2Cx peripherals
+ * TODO
+ */
+
+
+/*
+ * Clock Enable Macros for SPIx peripherals
+ * TODO
+ */
+
+/*
+ * Clock Enable Macros for SYSCFG peripheral
+ * TODO
+ */
 
 #endif /* INC_STM32F401XX_H_ */
