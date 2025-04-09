@@ -102,8 +102,8 @@ typedef struct {
 
 //rcc registers
 typedef struct {
-	__vo uint32_t RC; // Address offset: 0x00
-	__vo uint32_t PLLCFGR;  // Address offset: 0x04
+	__vo uint32_t RC;    // Address offset: 0x00
+	__vo uint32_t PLLCFGR;   // Address offset: 0x04
 	__vo uint32_t CFGR;  // Address offset: 0x08
 	__vo uint32_t CIR;  // Address offset: 0x0C
 	__vo uint32_t AHB1RSTR;  // Address offset: 0x10
@@ -131,6 +131,12 @@ typedef struct {
 
 // extI registers
 typedef struct{
+	__vo uint32_t  IMR; //0x00
+	__vo uint32_t  EMR;//0x04
+	__vo uint32_t  RTSR;//0x08
+	__vo uint32_t  FTSR;//0x0C
+	__vo uint32_t  SWIER;//0x10
+	__vo uint32_t  PR;//0x14
 
 } EXTI_RegDef_t;
 
@@ -138,6 +144,14 @@ typedef struct{
 //spi registers
 typedef struct
 {
+	__vo uint32_t CR1; //0x00
+	__vo uint32_t CR2; //0x04
+	__vo uint32_t DR; //0x0x0C
+	__vo uint32_t CRCPR; // Address offset: 0x10     not used in I2S (mode)
+	__vo uint32_t RXCRCR; //0x14
+	__vo uint32_t TXCRCR; //0x18
+	__vo uint32_t I2SCFGR; //0x1C
+	__vo uint32_t I2SPR; // 0x20
 
 } SPI_RegDef_t;
 
@@ -172,6 +186,13 @@ typedef struct {
 
 // usart registers
 typedef struct {
+	__vo uint32_t SR; //0x00
+	__vo uint32_t DR; //0x04
+	__vo uint32_t BRR;//0x08
+	__vo uint32_t CR1;//0x0C
+	__vo uint32_t CR2;//0x10
+	__vo uint32_t CR3;//0x14
+	__vo uint32_t GTPR;//0x18
 
 }USART_RegDef_t;
 
