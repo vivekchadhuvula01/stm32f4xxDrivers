@@ -24,7 +24,7 @@
 #define FLASH_BASE_ADDR     0x08000000U
 #define SRAM1_BASE_ADDR    0x20000000U
 #define ROM_BASE_ADDR        0x1FFF0000U
-#define SRAM 	                         SRAM1_BASE_ADDR
+#define SRAM 	                        SRAM1_BASE_ADDR
 
 /*
  * AHBx and APBx Bus Peripheral base addresses
@@ -265,6 +265,8 @@ typedef struct {
  * TODO
  */
 #define SYSCFG_CLK_EN() (RCC->APB2ENR |= (1<<14))
+
+//ADD NECESSARY GPIO PINS
 
 
 
