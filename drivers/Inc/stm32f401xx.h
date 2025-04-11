@@ -266,8 +266,15 @@ typedef struct {
  */
 #define SYSCFG_CLK_EN() (RCC->APB2ENR |= (1<<14))
 
-//ADD NECESSARY GPIO PINS
-
-
+/*
+ * Clock Enable Macros for GPIOx peripheral
+ * TODO
+ */
+#define GPIOA_CLK_EN()  (RCC->AHB1ENR |= (1<<0))
+#define GPIOB_CLK_EN()  (RCC->AHB1ENR |= (1<<1))
+#define GPIOC_CLK_EN()  (RCC->AHB1ENR |= (1<<2))
+#define GPIOD_CLK_EN()  (RCC->AHB1ENR |= (1<<3))
+#define GPIOE_CLK_EN()  (RCC->AHB1ENR |= (1<<4))
+#define GPIOH_CLK_EN()  (RCC->AHB1ENR |= (1<<7))
 
 #endif /* INC_STM32F401XX_H_ */
