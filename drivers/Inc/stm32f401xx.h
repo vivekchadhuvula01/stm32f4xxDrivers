@@ -243,16 +243,29 @@ typedef struct {
  * Clock Enable Macros for I2Cx peripherals
  * TODO
  */
+#define I2C1_CLK_EN() (RCC->APB1ENR |= (1<<21))
+#define I2C2_CLK_EN() (RCC->APB1ENR |= (1<<22))
+#define I2C3_CLK_EN() (RCC->APB1ENR |= (1<<23))
+
 
 
 /*
  * Clock Enable Macros for SPIx peripherals
  * TODO
  */
+#define SPI1_CLK_EN() (RCC->APB2ENR |= (1<<12))
+#define SPI2_CLK_EN() (RCC->APB1ENR |= (1<<14))
+#define SPI3_CLK_EN() (RCC->APB1ENR |= (1<<15))
+#define SPI4_CLK_EN() (RCC->APB2ENR |= (1<<13))
+
+
 
 /*
  * Clock Enable Macros for SYSCFG peripheral
  * TODO
  */
+#define SYSCFG_CLK_EN() (RCC->APB2ENR |= (1<<14))
+
+
 
 #endif /* INC_STM32F401XX_H_ */
