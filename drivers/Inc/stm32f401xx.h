@@ -279,9 +279,11 @@ typedef struct {
 
 
 // Some general macros
-#define ENABLE     1
-#define DISABLE    0
-#define SET          ENABLE
-#define RESET       DISABLE
+#define ENABLE      1
+#define DISABLE     0
+#define SET            ENABLE
+#define RESET        DISABLE
+#define PIN_SET     SET
+#define PIN_RESET RESET
 
 #endif /* INC_STM32F401XX_H_ */
