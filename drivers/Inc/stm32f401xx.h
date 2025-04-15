@@ -277,4 +277,11 @@ typedef struct {
 #define GPIOE_CLK_EN()  (RCC->AHB1ENR |= (1<<4))
 #define GPIOH_CLK_EN()  (RCC->AHB1ENR |= (1<<7))
 
+
+// Some general macros
+#define ENABLE     1
+#define DISABLE    0
+#define SET          ENABLE
+#define RESET       DISABLE
+
 #endif /* INC_STM32F401XX_H_ */

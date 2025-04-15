@@ -94,7 +94,33 @@ typedef struct
  *								APIs supported by this driver
  *		 For more information about the APIs check the function definitions
  ******************************************************************************************/
+/*
+ * Peripheral Clock setup
+ */
+void GPIO_PeriClkCntrl(void);
 
+
+/*
+ * Init and De-init
+ */
+void GPIO_Init(void);
+void GPIO_DeInit(void);
+
+/*
+ * Data read and write
+ */
+void GPIO_ReadFromInputPin(void);
+void GPIO_ReadFromInputPort(void);
+void GPIO_WriteToOutputPin(void);
+void GPIO_WriteToOutputPort(void);
+void GPIO_TOggleOutputPin(void);
+
+/*
+ * IRQ Configuration and ISR handling
+ */
+void GPIO_IRQInterruptConfig(void);
+void GPIO_IRQPriorityCOnfig(void);
+void GPIO_IRQHandling(void);
 
 
 #endif /* INC_STM32F401XX_GPIO_H_ */
